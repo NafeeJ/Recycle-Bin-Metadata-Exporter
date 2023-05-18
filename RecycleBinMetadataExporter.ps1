@@ -72,13 +72,13 @@ $firstRow = [PSCustomObject]@{
     ByteSize = $metadata[0].ByteSize
     "RecycleBinMetadataExport`n$dateRun`n$totalByteSize Bytes`n$numItems Items`n$computerName" = ""
 }
-$metadata = $metadata[1..($metadata.Length - 1)]
+$metadata = $metadata[1..($metadata.Length)]
 
 # Combine headers, first row, and recycle bin metadata
 $csvData = @($firstRow) + $metadata
 
 # Specify the path to the CSV file
-$csvPath = "C:\Users\power\Coding Projects\Python Projects\RecycleBinMetaExporter\RecycleBinMetadataExport_$fileDate.csv"
+$csvPath = ".\RecycleBinMetadataExport_$fileDate.csv"
 
 # Export metadata to CSV
 $csvData | Export-Csv -Path $csvPath -Encoding UTF8 -NoTypeInformation
